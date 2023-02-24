@@ -2,11 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
 
 :root {
-  --one: 144px;
-  --two: 55px;
-  --three: 34px;
-  --four: 21px;
-  --five: 13px;
+  --col-width: 44vw;
 }
 
 /* normalize */
@@ -25,29 +21,35 @@ main {
   margin: 0;
   padding: 0;
 
-  background-color: black;
+  /* background-color: black; */
+  background-color: #00ff00;
 }
 
 section {
   padding: clamp(1rem, 5vw, 2rem);
-  padding-right: clamp(4rem, 21vw, 8rem);
+  /* padding-right: clamp(4rem, 21vw, 8rem); */
 }
 header {
   background-color: #00ff00;
-  min-height: 45vh;
 }
-article {
-  /* min-height: 45vh;
-  min-height: 45svh; */
-  position: relative;
+.header-section {
+  /* position: relative; */
+  min-height: 65svh;
 }
-h1,
+#sequence {
+  /* position: absolute; */
+  bottom: 1em;
+  /* left: clamp(1rem, 5vw, 2rem);
+  right: clamp(1rem, 5vw, 2rem); */
+  color: black;
+}
+/* h1, */
 h2,
 h3 {
   margin: 0;
 }
 h1 {
-  font-size: clamp(55px, 21vw - 1em, 144px);
+  font-size: clamp(55px, 21vw - 1em, 89px);
 }
 h2 {
   font-size: clamp(34px, 13vw - 1em, 55px);
@@ -60,19 +62,30 @@ main {
   display: flex;
 }
 .first {
-  background-color: white;
-  width: 50vw;
+  background-color: black;
+  color: white;
+  width: var(--col-width);
 }
 .second {
-  color: white;
+  color: black;
+  background-color: white;
+  /* width: 100%; */
+
+  width: calc(100% - var(--col-width));
 }
-p,
+.footer-text {
+  width: calc(var(--col-width) / 2);
+}
+
 #sequence {
-  font-size: clamp(21px, 5vw - 1em, 34px);
+  font-size: clamp(34px, 5vw - 1em, 45px);
+}
+p {
+  font-size: clamp(21px);
 }
 .inputs {
   /* position: absolute; */
-  bottom: 2em;
+  /* bottom: 2em; */
 }
 form {
   display: flex;
@@ -81,12 +94,18 @@ form {
   align-items: center;
   gap: 2em;
 }
-#slider {
+#slider,
+#slider-multiply {
   width: 100%;
 }
 form > div {
 }
-
+label {
+  width: 400px;
+}
+label span {
+  /* display: block; */
+}
 input,
 button {
   width: 100%;
@@ -97,10 +116,12 @@ button {
 
 button {
   background-color: white;
+  color: black;
   /* padding: 1em; */
   border: 0px;
   width: 100%;
   cursor: pointer;
+  padding: 0.3em 0.8em;
 }
 
 .output {
@@ -108,19 +129,19 @@ button {
   display */
   display: inline-block;
   padding-right: 1em;
-  mix-blend-mode: difference;
 }
 .output > span {
-  position: relative;
-  mix-blend-mode: difference;
+  /* position: relative; */
   /* height: 10vh; */
   display: block;
 }
 .footer-text {
-  width: 50%;
-  background-color: white;
+  /* flex-grow: 0.5; */
+  /* width: var(--col-width); */
+  /* background-color: white; */
 }
 .made-by {
+  background-color: black;
   color: white;
 }
 .made-by a {
@@ -131,8 +152,20 @@ button {
   main {
     display: block;
   }
+  header {
+    /* min-height: 55vh; */
+  }
+  h1 {
+    font-size: clamp(55px, 21vw - 1em, 144px);
+  }
   .first {
     width: 100%;
+  }
+  .second {
+    width: 100%;
+  }
+  .inputs {
+    padding: clamp(1rem, 5vw, 2rem);
   }
   form {
     flex-wrap: nowrap;
