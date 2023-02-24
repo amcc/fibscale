@@ -9,12 +9,17 @@
     <script type="text/javascript">
       window.addEventListener("DOMContentLoaded", () => {
         let fibSeq = [0, 1];
+        let shiftArray = [];
         let shift = 0;
-        let fibLength = 20;
+        let fibLength = 14;
         const sequence = document.getElementById("sequence");
         const slider = document.querySelector("input[type=range]");
         const number = document.querySelector("input[type=number]");
         const reset = document.querySelector("button");
+
+        const output = document.getElementById("output");
+        const outputEls = output.querySelectorAll("span");
+        console.log(outputEls);
 
         reset.addEventListener("click", (e) => {
           e.preventDefault();
@@ -28,15 +33,17 @@
           slider.value = e.target.value;
           shift = e.target.value;
           shifter(fibSeq);
+          sizeOutput();
         });
         slider.addEventListener("input", (e) => {
           number.value = e.target.value;
           shift = e.target.value;
           shifter(fibSeq);
+          sizeOutput();
         });
 
         const shifter = (array) => {
-          let shiftArray = array.map((num) => num + Number(shift));
+          shiftArray = array.map((num) => num + Number(shift));
 
           makeString(shiftArray);
         };
@@ -56,27 +63,41 @@
         };
 
         generate();
+        shifter(fibSeq);
         makeString(fibSeq);
+
+        const sizeOutput = () => {
+          console.log("size");
+          outputEls.forEach((span, i) => {
+            span.style.fontSize = null;
+            span.style.fontSize = `${shiftArray[13 - i]}px`;
+          });
+        };
+        sizeOutput();
       });
     </script>
   </head>
   <body>
     <main>
-      <header>
-        <section>
-          <h1>Fibonacci Scale</h1>
-          <p>
-            The fibonnaci scale is formed by adding the previous two numbers.
-            Customise the scale with the slider & input to add/subtract a value
-            to each number.
-          </p>
-        </section>
-      </header>
-      <article>
-        <section>
-          <h2>Sequence</h2>
-          <div id="sequence">hi</div>
-        </section>
+      <div class="first">
+        <header>
+          <section>
+            <h1>Fibonacci Scale</h1>
+            <p>
+              The fibonnaci scale is formed by adding the previous two numbers.
+              Customise the scale with the slider & input to add/subtract a
+              value to each number.
+            </p>
+          </section>
+        </header>
+        <article>
+          <section>
+            <h2>Sequence</h2>
+            <div id="sequence">hi</div>
+          </section>
+        </article>
+      </div>
+      <div>
         <section class="inputs">
           <form>
             <div id="slider">
@@ -86,7 +107,16 @@
             <div id="button"><button>reset</button></div>
           </form>
         </section>
-      </article>
+        <section id="output">
+          <span>One</span>
+          <span>should</span>
+          <span>never</span>
+          <span>mistake</span>
+          <span>pattern</span>
+          <span>for</span>
+          <span>meaning</span>
+        </section>
+      </div>
     </main>
     <footer>
       <section>Made by <a href="https://amcc.io">amcc.io</a></section>

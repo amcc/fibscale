@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
 
+:root {
+  --one: 144px;
+  --two: 55px;
+  --three: 34px;
+  --four: 21px;
+  --five: 13px;
+}
+
 /* normalize */
 * {
   box-sizing: border-box;
@@ -28,8 +36,8 @@ header {
   min-height: 55svh;
 }
 article {
-  min-height: 45vh;
-  min-height: 45svh;
+  /* min-height: 45vh;
+  min-height: 45svh; */
   position: relative;
 }
 h1,
@@ -41,24 +49,33 @@ h1 {
   font-size: clamp(55px, 21vw - 1em, 144px);
 }
 h2 {
-  font-size: clamp(34px, 13vw - 1em, 89px);
+  font-size: clamp(34px, 13vw - 1em, 55px);
+}
+
+main {
+  display: flex;
+}
+.first {
+  width: 60vw;
 }
 
 p,
 #sequence {
-  font-size: clamp(21px, 5vw - 1em, 55px);
+  font-size: clamp(21px, 5vw - 1em, 34px);
 }
 .inputs {
-  position: absolute;
+  /* position: absolute; */
   bottom: 2em;
 }
 form {
   display: flex;
+
+  flex-wrap: wrap;
   align-items: center;
   gap: 2em;
 }
 #slider {
-  width: 50vw;
+  width: 100%;
 }
 form > div {
 }
@@ -66,8 +83,9 @@ form > div {
 input,
 button {
   width: 100%;
-  font-size: clamp(16px, 3vw, 34px);
-  flex-grow: 1;
+  font-size: clamp(16px, 3vw, 21px);
+  /* flex-grow: 1; */
+  flex: 1;
 }
 
 button {
@@ -76,4 +94,31 @@ button {
   border: 0px;
   width: 100%;
   cursor: pointer;
+}
+
+#output {
+  /* line-height: 6rem;
+  display */
+  display: inline-block;
+  padding-right: 1em;
+}
+
+@media screen and (max-width: 1200px) {
+  main {
+    display: block;
+  }
+  .first {
+    width: 100%;
+  }
+  form {
+    flex-wrap: nowrap;
+  }
+  input,
+  button {
+    flex: 0;
+    flex-grow: 1;
+  }
+  #slider {
+    width: 100%;
+  }
 }
