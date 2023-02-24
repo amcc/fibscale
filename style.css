@@ -24,6 +24,8 @@ body,
 main {
   margin: 0;
   padding: 0;
+
+  background-color: black;
 }
 
 section {
@@ -32,8 +34,7 @@ section {
 }
 header {
   background-color: #00ff00;
-  min-height: 55vh;
-  min-height: 55svh;
+  min-height: 45vh;
 }
 article {
   /* min-height: 45vh;
@@ -52,13 +53,19 @@ h2 {
   font-size: clamp(34px, 13vw - 1em, 55px);
 }
 
+a {
+  color: black;
+}
 main {
   display: flex;
 }
 .first {
-  width: 60vw;
+  background-color: white;
+  width: 50vw;
 }
-
+.second {
+  color: white;
+}
 p,
 #sequence {
   font-size: clamp(21px, 5vw - 1em, 34px);
@@ -89,18 +96,35 @@ button {
 }
 
 button {
-  background-color: #00ff00;
+  background-color: white;
   /* padding: 1em; */
   border: 0px;
   width: 100%;
   cursor: pointer;
 }
 
-#output {
+.output {
   /* line-height: 6rem;
   display */
   display: inline-block;
   padding-right: 1em;
+  mix-blend-mode: difference;
+}
+.output > span {
+  position: relative;
+  mix-blend-mode: difference;
+  /* height: 10vh; */
+  display: block;
+}
+.footer-text {
+  width: 50%;
+  background-color: white;
+}
+.made-by {
+  color: white;
+}
+.made-by a {
+  color: white;
 }
 
 @media screen and (max-width: 1200px) {
@@ -119,6 +143,9 @@ button {
     flex-grow: 1;
   }
   #slider {
+    width: 100%;
+  }
+  .footer-text {
     width: 100%;
   }
 }

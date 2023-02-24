@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript">
       window.addEventListener("DOMContentLoaded", () => {
-        let fibSeq = [0, 1];
+        let textStart = 10;
+        let fibSeq = [1, 2];
         let shiftArray = [];
         let shift = 0;
         let fibLength = 14;
@@ -17,16 +18,13 @@
         const number = document.querySelector("input[type=number]");
         const reset = document.querySelector("button");
 
-        const output = document.getElementById("output");
-        const outputEls = output.querySelectorAll("span");
-        console.log(outputEls);
-
         reset.addEventListener("click", (e) => {
           e.preventDefault();
           slider.value = 0;
           number.value = 0;
           shift = 0;
           shifter(fibSeq);
+          sizeOutput();
         });
 
         number.addEventListener("input", (e) => {
@@ -67,10 +65,21 @@
         makeString(fibSeq);
 
         const sizeOutput = () => {
+          const output = document.getElementById("output");
+          const outputEls = output.querySelectorAll("span");
+          const outputpx = document.getElementById("output-px");
+          const outputElsPx = outputpx.querySelectorAll("span");
           console.log("size");
           outputEls.forEach((span, i) => {
             span.style.fontSize = null;
-            span.style.fontSize = `${shiftArray[13 - i]}px`;
+            span.style.fontSize = `${
+              shiftArray[textStart - i] > 0 ? shiftArray[textStart - i] : 0
+            }px`;
+          });
+          outputElsPx.forEach((span, i) => {
+            span.style.fontSize = null;
+            span.style.fontSize = `${shiftArray[textStart - i]}px`;
+            span.innerHTML = `${shiftArray[textStart - i]}`;
           });
         };
         sizeOutput();
@@ -82,22 +91,21 @@
       <div class="first">
         <header>
           <section>
-            <h1>Fibonacci Scale</h1>
+            <h1>Fibonacci</h1>
+            <div id="sequence">hi</div>
+          </section>
+        </header>
+        <article>
+          <section>
             <p>
               The fibonnaci scale is formed by adding the previous two numbers.
               Customise the scale with the slider & input to add/subtract a
               value to each number.
             </p>
           </section>
-        </header>
-        <article>
-          <section>
-            <h2>Sequence</h2>
-            <div id="sequence">hi</div>
-          </section>
         </article>
       </div>
-      <div>
+      <div class="second">
         <section class="inputs">
           <form>
             <div id="slider">
@@ -107,7 +115,7 @@
             <div id="button"><button>reset</button></div>
           </form>
         </section>
-        <section id="output">
+        <section id="output" class="output">
           <span>One</span>
           <span>should</span>
           <span>never</span>
@@ -116,10 +124,45 @@
           <span>for</span>
           <span>meaning</span>
         </section>
+        <section id="output-px" class="output">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </section>
       </div>
     </main>
     <footer>
-      <section>Made by <a href="https://amcc.io">amcc.io</a></section>
+      <section class="footer-text">
+        <p>
+          In the example above the sequence begins as a normal Fibonacci
+          sequence. By moving the slider you shift all the numbers up or down by
+          that value. It will then not be a Fibonacci sequence, but the gaps
+          will all be the same as the original. This can be useful when using it
+          as a font scale, but you want it to include 16px as your base font
+          size for instance.
+        </p>
+        <p>
+          In mathematics, the Fibonacci numbers form a sequence, in which each
+          number is the sum of the two preceding ones. The first few values in
+          the sequence are: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144. The
+          Fibonacci numbers were first described in Indian mathematics, as early
+          as 200 BC in work by Pingala on enumerating possible patterns of
+          Sanskrit poetry formed from syllables of two lengths. They are named
+          after the Italian mathematician Leonardo of Pisa, later known as
+          Fibonacci, who introduced the sequence to Western European mathematics
+          in his 1202 book Liber Abaci.
+          <a href="https://en.wikipedia.org/wiki/Fibonacci_number"
+            >find out more on wikipedia</a
+          >
+        </p>
+      </section>
+      <section class="made-by">
+        Made by <a href="https://amcc.io">amcc.io</a>
+      </section>
     </footer>
   </body>
 </html>
