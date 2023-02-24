@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
+
+/* normalize */
+* {
+  box-sizing: border-box;
+}
+
+body,
+button {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+html,
+body,
+main {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  padding: clamp(1rem, 5vw, 2rem);
+  padding-right: clamp(4rem, 21vw, 8rem);
+}
+header {
+  background-color: #00ff00;
+  min-height: 55vh;
+  min-height: 55svh;
+}
+article {
+  min-height: 45vh;
+  min-height: 45svh;
+  position: relative;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+h1 {
+  font-size: clamp(55px, 21vw - 1em, 144px);
+}
+h2 {
+  font-size: clamp(34px, 13vw - 1em, 89px);
+}
+
+p,
+#sequence {
+  font-size: clamp(21px, 5vw - 1em, 55px);
+}
+.inputs {
+  position: absolute;
+  bottom: 2em;
+}
+form {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+#slider {
+  width: 50vw;
+}
+form > div {
+}
+
+input,
+button {
+  width: 100%;
+  font-size: clamp(16px, 3vw, 34px);
+  flex-grow: 1;
+}
+
+button {
+  background-color: #00ff00;
+  /* padding: 1em; */
+  border: 0px;
+  width: 100%;
+  cursor: pointer;
+}

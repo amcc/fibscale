@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fibonacci scale</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript">
+      window.addEventListener("DOMContentLoaded", () => {
+        let fibSeq = [0, 1];
+        let shift = 0;
+        let fibLength = 20;
+        const sequence = document.getElementById("sequence");
+        const slider = document.querySelector("input[type=range]");
+        const number = document.querySelector("input[type=number]");
+        const reset = document.querySelector("button");
+
+        reset.addEventListener("click", (e) => {
+          e.preventDefault();
+          slider.value = 0;
+          number.value = 0;
+          shift = 0;
+          shifter(fibSeq);
+        });
+
+        number.addEventListener("input", (e) => {
+          slider.value = e.target.value;
+          shift = e.target.value;
+          shifter(fibSeq);
+        });
+        slider.addEventListener("input", (e) => {
+          number.value = e.target.value;
+          shift = e.target.value;
+          shifter(fibSeq);
+        });
+
+        const shifter = (array) => {
+          let shiftArray = array.map((num) => num + Number(shift));
+
+          makeString(shiftArray);
+        };
+
+        const generate = () => {
+          // for loop to generate fibonacci sequence
+          for (let i = 0; i < fibLength; i++) {
+            fibSeq.push(fibSeq[i] + fibSeq[i + 1]);
+          }
+        };
+
+        const makeString = (array) => {
+          // string from fibSeq comma separated
+          let fibSeqString = array.join(", ");
+
+          sequence.innerHTML = fibSeqString;
+        };
+
+        generate();
+        makeString(fibSeq);
+      });
+    </script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <section>
+          <h1>Fibonacci Scale</h1>
+          <p>
+            find your fibonacci scale. Use the slider to vary the start point
+            (positively or negatively)
+          </p>
+        </section>
+      </header>
+      <article>
+        <section>
+          <h2>Sequence</h2>
+          <div id="sequence">hi</div>
+        </section>
+        <section class="inputs">
+          <form>
+            <div id="slider">
+              <input type="range" min="-50" max="50" step="1" value="0" />
+            </div>
+            <div id="number"><input type="number" value="0" /></div>
+            <div id="button"><button>reset</button></div>
+          </form>
+        </section>
+      </article>
+    </main>
+    <footer>
+      <section>Made by <a href="https://amcc.io">amcc.io</a></section>
+    </footer>
+  </body>
+</html>
